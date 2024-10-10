@@ -21,7 +21,6 @@ public class IconNameStateMachine {
     public String nameBasedOnState(String weatherStateStr, int clouds) {
         if (weatherStateStr == null) {
             // TODO not sure if it's correct place to log about possible API chance
-            System.out.println("here 1");
             logger.debug(String.format(POSSIBLE_API_CHANGE, "WeatherState"));
             return "default.png";
         }
