@@ -1,6 +1,5 @@
 package com.dimitrov_solutions.weight_tracker.models.weather.beans;
 
-import com.dimitrov_solutions.weight_tracker.models.weather.WeatherState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,11 @@ public class IconNameStateMachine {
     public static final String POSSIBLE_API_CHANGE = "Possible API changed! null value for %s field";
     public static final String VALUE_NOT_SUPPORTED = "%s not supported! Add: %s";
     public static Logger logger = LoggerFactory.getLogger(IconNameStateMachine.class);
-    private final WeatherStateMap weatherStateMap;
+    private final StateMap stateMap;
 
     @Autowired
-    public IconNameStateMachine(WeatherStateMap weatherStateMap) {
-        this.weatherStateMap = weatherStateMap;
+    public IconNameStateMachine(StateMap stateMap) {
+        this.stateMap = stateMap;
     }
 
     public String nameBasedOnState(String weatherStateStr, int clouds) {
@@ -26,9 +25,9 @@ public class IconNameStateMachine {
         }
 
         try {
-            WeatherState state = null;
-            if (weatherStateMap.contains(weatherStateStr)) {
-                state = WeatherState.valueOf(weatherStateMap.getEnumValue(weatherStateStr));
+            State state = null;
+            if (stateMap.contains(weatherStateStr)) {
+                state = State.valueOf(stateMap.getEnumValue(weatherStateStr));
             }
 
             return switch (state) {
