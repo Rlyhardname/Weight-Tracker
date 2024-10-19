@@ -11,16 +11,20 @@ import java.nio.file.Path;
 
 public class UrlFacade {
     public static Logger logger = LoggerFactory.getLogger(UrlFacade.class);
-    private static String API_KEY;
+    private static final String API_KEY;
     private static final String HOST = "api.openweathermap.org";
 
-    public static void loadUrlResource() throws NoSuchFileException {
+    static {
         String fileUrl = "src/main/resources/api_key.txt";
         try {
             API_KEY = Files.readString(Path.of(fileUrl));
         } catch (IOException e) {
             //throw global
-            throw new NoSuchFileException(fileUrl);
+            try {
+                throw new NoSuchFileException(fileUrl);
+            } catch (NoSuchFileException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
