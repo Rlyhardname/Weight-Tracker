@@ -1,6 +1,5 @@
 package com.dimitrov_solutions.weight_tracker.unit.domain.models.validations;
 
-import com.dimitrov_solutions.weight_tracker.exceptions.EmailTakenException;
 import com.dimitrov_solutions.weight_tracker.models.validations.UniqueEmailValidator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

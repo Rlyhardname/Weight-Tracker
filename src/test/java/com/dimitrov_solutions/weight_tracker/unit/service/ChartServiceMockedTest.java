@@ -1,6 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.unit.service;
 
-import com.dimitrov_solutions.weight_tracker.models.Chart;
+import underDev.Chart;
 import com.dimitrov_solutions.weight_tracker.repositories.ChartRepository;
 import com.dimitrov_solutions.weight_tracker.services.ChartService;
 import org.junit.jupiter.api.BeforeEach;

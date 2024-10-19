@@ -1,14 +1,11 @@
 package com.dimitrov_solutions.weight_tracker.unit.domain;
 
-import com.dimitrov_solutions.weight_tracker.models.Builder;
-import com.dimitrov_solutions.weight_tracker.models.Chart;
-import com.dimitrov_solutions.weight_tracker.models.ChartBuilder;
+import underDev.Builder;
+import underDev.Chart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;

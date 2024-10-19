@@ -1,7 +1,7 @@
 package com.dimitrov_solutions.weight_tracker.unit.domain;
 
-import com.dimitrov_solutions.weight_tracker.models.Chart;
-import com.dimitrov_solutions.weight_tracker.models.ChartBuilder;
+import underDev.Chart;
+import underDev.ChartBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

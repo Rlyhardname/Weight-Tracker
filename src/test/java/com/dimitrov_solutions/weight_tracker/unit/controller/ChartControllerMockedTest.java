@@ -1,10 +1,8 @@
 package com.dimitrov_solutions.weight_tracker.unit.controller;
 
 import com.dimitrov_solutions.weight_tracker.controllers.ChartController;
-import com.dimitrov_solutions.weight_tracker.models.Chart;
-import com.dimitrov_solutions.weight_tracker.repositories.ChartRepository;
+import underDev.Chart;
 import com.dimitrov_solutions.weight_tracker.services.ChartService;
-import com.dimitrov_solutions.weight_tracker.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

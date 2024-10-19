@@ -1,8 +1,8 @@
 package com.dimitrov_solutions.weight_tracker.unit.utils;
 
-import com.dimitrov_solutions.weight_tracker.models.weather.WeatherState;
+import com.dimitrov_solutions.weight_tracker.models.weather.beans.State;
 import com.dimitrov_solutions.weight_tracker.models.weather.beans.IconNameStateMachine;
-import com.dimitrov_solutions.weight_tracker.models.weather.beans.WeatherStateMap;
+import com.dimitrov_solutions.weight_tracker.models.weather.beans.StateMap;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class IconNameStateMachineTest {
 
-    static WeatherState[] weatherStates;
+    static String[] imageCodes;
     static Set<String> namesSet;
     static Set<String> namesSetBasedOnRainTypes;
     static String[] arrayOfRainTypes;
@@ -30,7 +30,15 @@ public class IconNameStateMachineTest {
 
     @BeforeAll
     static void initStatic() {
-        weatherStates = WeatherState.values();
+        imageCodes = new String[]{"01d",
+                "02d",
+                "03d",
+                "04d",
+                "09d",
+                "10d",
+                "11d",
+                "13d",
+                "50d"};
         namesSet = Set.of("sunny_weather.png",
                 "sunny_cloudy.png",
                 "cloudy_forecast.png",
@@ -60,9 +68,9 @@ public class IconNameStateMachineTest {
 
     @Test
     void enum_test() {
-        WeatherState state = WeatherState.valueOf("SNOW");
-        System.out.println(state == WeatherState.SNOW);
-        System.out.println(WeatherState.SNOW.compareTo(WeatherState.SNOW));
+        State state = State.valueOf("SNOW");
+        System.out.println(state == State.SNOW);
+        System.out.println(State.SNOW.compareTo(State.SNOW));
         System.out.println();
     }
 
@@ -88,8 +96,6 @@ public class IconNameStateMachineTest {
     void returns_valid_image_name() {
         String actual = getName();
 
-        System.out.println(actual);
-
         assertTrue(namesSet.contains(actual));
     }
 
@@ -103,15 +109,15 @@ public class IconNameStateMachineTest {
     private String getName() {
         int index = secureRandom.nextInt(0, 9);
         int cloudiness = secureRandom.nextInt(0, 101);
-        return iconNameStateMachine.nameBasedOnState(weatherStates[index].getWeather(), cloudiness);
+        return iconNameStateMachine.nameBasedOnState(imageCodes[index], cloudiness);
     }
 
     @Nested
     class IconNameStateMachineProtectedTest extends IconNameStateMachine {
 
         @Autowired
-        public IconNameStateMachineProtectedTest(WeatherStateMap weatherStateMap) {
-            super(weatherStateMap);
+        public IconNameStateMachineProtectedTest(StateMap stateMap) {
+            super(stateMap);
         }
 
         @Test

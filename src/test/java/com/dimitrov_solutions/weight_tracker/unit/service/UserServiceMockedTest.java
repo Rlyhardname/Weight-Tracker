@@ -1,6 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.unit.service;
 
-import com.dimitrov_solutions.weight_tracker.models.UserAccount;
+import com.dimitrov_solutions.weight_tracker.models.user.User;
 import com.dimitrov_solutions.weight_tracker.repositories.UserRepository;
 import com.dimitrov_solutions.weight_tracker.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ public class UserServiceMockedTest {
 
     @Test
     void Fetch_user_account_by_email() {
-        UserAccount expected = new UserAccount(stubEmail, stubPassword);
+        User expected = new User(stubEmail, stubPassword);
         //    when(userService.fetchUserByEmail()).
     }
 }
