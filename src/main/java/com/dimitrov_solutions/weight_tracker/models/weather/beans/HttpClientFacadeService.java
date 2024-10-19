@@ -7,7 +7,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
 
 @Service
 public class HttpClientFacadeService {
