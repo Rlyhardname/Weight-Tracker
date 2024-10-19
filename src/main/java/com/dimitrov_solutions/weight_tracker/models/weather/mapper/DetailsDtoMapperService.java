@@ -19,8 +19,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @Service
-public class DetailsDtoMapper extends JsonDeserializer<DetailsDto> implements InternalValidator {
-    public static final Logger logger = LoggerFactory.getLogger(DetailsDtoMapper.class);
+public class DetailsDtoMapperService extends JsonDeserializer<DetailsDto> implements InternalValidator {
+    public static final Logger logger = LoggerFactory.getLogger(DetailsDtoMapperService.class);
     public static final String ENDPOINT_NOT_PRODUCING_FIELD = "Endpoint at: %s%n doesn't contain field: %s";
     private String url;
     private IconNameStateMachine iconNameStateMachine;
