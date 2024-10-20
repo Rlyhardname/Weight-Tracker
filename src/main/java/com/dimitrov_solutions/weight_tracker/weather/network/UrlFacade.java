@@ -1,4 +1,4 @@
-package com.dimitrov_solutions.weight_tracker.models.weather.utils;
+package com.dimitrov_solutions.weight_tracker.weather.network;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

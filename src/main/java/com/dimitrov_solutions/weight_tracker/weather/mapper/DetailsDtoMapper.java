@@ -1,8 +1,8 @@
-package com.dimitrov_solutions.weight_tracker.models.weather.mapper;
+package com.dimitrov_solutions.weight_tracker.weather.mapper;
 
-import com.dimitrov_solutions.weight_tracker.models.weather.BadDataApiResponseException;
-import com.dimitrov_solutions.weight_tracker.models.weather.beans.IconNameStateMachine;
-import com.dimitrov_solutions.weight_tracker.models.weather.dto.DetailsDto;
+import com.dimitrov_solutions.weight_tracker.weather.exceptions.BadDataApiResponseException;
+import com.dimitrov_solutions.weight_tracker.weather.beans.IconNameStateMachine;
+import com.dimitrov_solutions.weight_tracker.models.dto.WeatherDetailsDto;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -12,15 +12,15 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-@Service
-public class DetailsDtoMapperService extends JsonDeserializer<DetailsDto> implements InternalValidator {
-    public static final Logger logger = LoggerFactory.getLogger(DetailsDtoMapperService.class);
+@Component
+public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implements InternalValidator {
+    public static final Logger logger = LoggerFactory.getLogger(DetailsDtoMapper.class);
     public static final String ENDPOINT_NOT_PRODUCING_FIELD = "Endpoint at: %s%n doesn't contain field: %s";
     private String url;
     private IconNameStateMachine iconNameStateMachine;
@@ -30,17 +30,17 @@ public class DetailsDtoMapperService extends JsonDeserializer<DetailsDto> implem
         this.iconNameStateMachine = iconNameStateMachine;
     }
 
-    public DetailsDto mapTo(String body, String url) {
+    public WeatherDetailsDto mapTo(String body, String url) {
         try {
             this.url = url;
 
             ObjectMapper mapper = new ObjectMapper();
             SimpleModule module = new SimpleModule();
 
-            module.addDeserializer(DetailsDto.class, this);
+            module.addDeserializer(WeatherDetailsDto.class, this);
             mapper.registerModule(module);
 
-            return mapper.readValue(body, DetailsDto.class);
+            return mapper.readValue(body, WeatherDetailsDto.class);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -49,7 +49,7 @@ public class DetailsDtoMapperService extends JsonDeserializer<DetailsDto> implem
 
 
     @Override
-    public final DetailsDto deserialize(JsonParser parser, DeserializationContext context) throws IOException {
+    public final WeatherDetailsDto deserialize(JsonParser parser, DeserializationContext context) throws IOException {
         JsonNode node = parser.getCodec().readTree(parser);
 
         int temp = BankerRound(validateToDouble(node.get("main").get("temp"), "main.temp"));
@@ -59,7 +59,7 @@ public class DetailsDtoMapperService extends JsonDeserializer<DetailsDto> implem
         String validatedApiWeatherState = validateToString(node.get("weather").get(0).get("icon"), "weather.icon");
         String imgName = iconNameStateMachine.nameBasedOnState(validatedApiWeatherState, clouds);
 
-        return new DetailsDto(temp, clouds, imgName, country, city);
+        return new WeatherDetailsDto(temp, clouds, imgName, country, city);
     }
 
     private int BankerRound(Double value) {

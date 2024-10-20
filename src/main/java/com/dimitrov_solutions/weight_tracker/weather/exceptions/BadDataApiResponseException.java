@@ -1,4 +1,4 @@
-package com.dimitrov_solutions.weight_tracker.models.weather;
+package com.dimitrov_solutions.weight_tracker.weather.exceptions;
 
 // TODO Global
 public class BadDataApiResponseException extends RuntimeException {

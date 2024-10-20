@@ -1,4 +1,4 @@
-package com.dimitrov_solutions.weight_tracker.models.weather.mapper;
+package com.dimitrov_solutions.weight_tracker.weather.mapper;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

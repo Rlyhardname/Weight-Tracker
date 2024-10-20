@@ -1,11 +1,11 @@
-package com.dimitrov_solutions.weight_tracker.models.weather.beans;
+package com.dimitrov_solutions.weight_tracker.weather.beans;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class IconNameStateMachine {
     public static final String POSSIBLE_API_CHANGE = "Possible API changed! null value for %s field";
     public static final String VALUE_NOT_SUPPORTED = "%s not supported! Add: %s";
