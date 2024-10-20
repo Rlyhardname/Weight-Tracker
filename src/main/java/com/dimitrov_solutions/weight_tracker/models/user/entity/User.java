@@ -1,5 +1,7 @@
 package com.dimitrov_solutions.weight_tracker.models.user.entity;
 
+import com.dimitrov_solutions.weight_tracker.models.dto.UserDto;
+import com.dimitrov_solutions.weight_tracker.utils.UUID7;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,9 +18,13 @@ public class User {
     private String country;
     private String city;
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public User(UserDto dto) {
+        id = String.valueOf(UUID7.generateUuid7());
+        username = dto.getUsername();
+        email = dto.getEmail();
+        password = dto.getPassword();
+        country = dto.getCountry();
+        city = dto.getCity();
     }
 
     public User() {
@@ -47,6 +53,10 @@ public class User {
 
     public String getCity() {
         return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public void setPassword(String password) {
