@@ -6,12 +6,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
 public class UrlFacade {
-    public static Logger logger = LoggerFactory.getLogger(UrlFacade.class);
-    private static final String API_KEY;
+    public static final Logger logger = LoggerFactory.getLogger(UrlFacade.class);
+    private static String API_KEY;
     private static final String HOST = "api.openweathermap.org";
 
     static {
@@ -19,12 +18,7 @@ public class UrlFacade {
         try {
             API_KEY = Files.readString(Path.of(fileUrl));
         } catch (IOException e) {
-            //throw global
-            try {
-                throw new NoSuchFileException(fileUrl);
-            } catch (NoSuchFileException ex) {
-                throw new RuntimeException(ex);
-            }
+            logger.error("Api directory changed, fix ASAP");
         }
     }
 

@@ -1,6 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.weather.mapper;
 
-import com.dimitrov_solutions.weight_tracker.weather.exceptions.BadDataApiResponseException;
+import com.dimitrov_solutions.weight_tracker.weather.exceptions.ApiChangeException;
 import com.dimitrov_solutions.weight_tracker.weather.beans.IconNameStateMachine;
 import com.dimitrov_solutions.weight_tracker.models.dto.WeatherDetailsDto;
 import com.fasterxml.jackson.core.JsonParser;
@@ -89,8 +89,8 @@ public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implem
             return node.asDouble();
         } catch (NullPointerException e) {
             logEndpointNotProducingField(fieldName, "debug");
-            if (fieldName.equals("temp")) {
-                throw new BadDataApiResponseException();
+            if (fieldName.equals("main.temp")) {
+                throw new ApiChangeException();
             }
         }
 

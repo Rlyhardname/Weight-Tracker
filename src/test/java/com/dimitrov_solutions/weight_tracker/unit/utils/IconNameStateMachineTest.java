@@ -1,6 +1,5 @@
 package com.dimitrov_solutions.weight_tracker.unit.utils;
 
-import com.dimitrov_solutions.weight_tracker.weather.beans.State;
 import com.dimitrov_solutions.weight_tracker.weather.beans.IconNameStateMachine;
 import com.dimitrov_solutions.weight_tracker.weather.beans.StateMap;
 import org.junit.jupiter.api.*;
@@ -10,7 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.security.SecureRandom;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class IconNameStateMachineTest {
@@ -64,14 +64,6 @@ public class IconNameStateMachineTest {
     @BeforeEach
     void init() {
         secureRandom = new SecureRandom();
-    }
-
-    @Test
-    void enum_test() {
-        State state = State.valueOf("SNOW");
-        System.out.println(state == State.SNOW);
-        System.out.println(State.SNOW.compareTo(State.SNOW));
-        System.out.println();
     }
 
     @Test
