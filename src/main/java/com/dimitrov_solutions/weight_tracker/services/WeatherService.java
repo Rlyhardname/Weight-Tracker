@@ -1,33 +1,33 @@
 package com.dimitrov_solutions.weight_tracker.services;
 
-import com.dimitrov_solutions.weight_tracker.models.user.UserDto;
-import com.dimitrov_solutions.weight_tracker.models.weather.beans.HttpClientFacadeService;
-import com.dimitrov_solutions.weight_tracker.models.weather.dto.DetailsDto;
-import com.dimitrov_solutions.weight_tracker.models.weather.mapper.DetailsDtoMapperService;
-import com.dimitrov_solutions.weight_tracker.models.weather.utils.UrlFacade;
+import com.dimitrov_solutions.weight_tracker.models.dto.UserDto;
+import com.dimitrov_solutions.weight_tracker.models.dto.WeatherDetailsDto;
+import com.dimitrov_solutions.weight_tracker.weather.mapper.DetailsDtoMapper;
+import com.dimitrov_solutions.weight_tracker.weather.network.HttpClientFacadeService;
+import com.dimitrov_solutions.weight_tracker.weather.network.UrlFacade;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WeatherService {
-    private final DetailsDtoMapperService detailsDtoMapperService;
+    private final DetailsDtoMapper detailsDtoMapper;
 
     private final HttpClientFacadeService httpClientFacadeService;
     private final UserService userService;
 
-    public WeatherService(DetailsDtoMapperService detailsDtoMapperService, HttpClientFacadeService httpClientFacadeService, UserService userService) {
-        this.detailsDtoMapperService = detailsDtoMapperService;
+    public WeatherService(DetailsDtoMapper detailsDtoMapper, HttpClientFacadeService httpClientFacadeService, UserService userService) {
+        this.detailsDtoMapper = detailsDtoMapper;
         this.httpClientFacadeService = httpClientFacadeService;
         this.userService = userService;
     }
 
-    public DetailsDto sendRequestReturnDetailsDto(String email) {
+    public WeatherDetailsDto sendRequestReturnDetailsDto(String email) {
         UserDto dto = userService.fetchUserDto(email);
 
         String url = UrlFacade.createUrl(dto.getCountry(), dto.getCity());
 
         String body = httpClientFacadeService.send(url);
 
-        return detailsDtoMapperService.mapTo(body, url);
+        return detailsDtoMapper.mapTo(body, url);
     }
 
 

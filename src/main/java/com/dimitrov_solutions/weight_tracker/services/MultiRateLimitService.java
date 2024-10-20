@@ -1,4 +1,4 @@
-package com.dimitrov_solutions.weight_tracker.models.weather.beans;
+package com.dimitrov_solutions.weight_tracker.services;
 
 import io.github.bucket4j.Bucket;
 import org.springframework.stereotype.Service;

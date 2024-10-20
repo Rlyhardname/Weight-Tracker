@@ -1,6 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.unit.service;
 
-import com.dimitrov_solutions.weight_tracker.models.user.User;
+import com.dimitrov_solutions.weight_tracker.models.user.entity.User;
 import com.dimitrov_solutions.weight_tracker.repositories.UserRepository;
 import com.dimitrov_solutions.weight_tracker.services.UserService;
 import org.junit.jupiter.api.BeforeEach;

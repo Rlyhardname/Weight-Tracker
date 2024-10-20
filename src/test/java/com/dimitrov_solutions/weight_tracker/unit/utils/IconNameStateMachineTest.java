@@ -1,8 +1,8 @@
 package com.dimitrov_solutions.weight_tracker.unit.utils;
 
-import com.dimitrov_solutions.weight_tracker.models.weather.beans.State;
-import com.dimitrov_solutions.weight_tracker.models.weather.beans.IconNameStateMachine;
-import com.dimitrov_solutions.weight_tracker.models.weather.beans.StateMap;
+import com.dimitrov_solutions.weight_tracker.weather.beans.State;
+import com.dimitrov_solutions.weight_tracker.weather.beans.IconNameStateMachine;
+import com.dimitrov_solutions.weight_tracker.weather.beans.StateMap;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
