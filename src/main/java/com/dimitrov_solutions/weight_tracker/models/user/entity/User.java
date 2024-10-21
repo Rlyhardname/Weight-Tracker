@@ -2,25 +2,30 @@ package com.dimitrov_solutions.weight_tracker.models.user.entity;
 
 import com.dimitrov_solutions.weight_tracker.models.dto.UserDto;
 import com.dimitrov_solutions.weight_tracker.utils.UUID7;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "user_account")
 public class User {
 
     @Id
-    private String id;
-    private String username;
+    private UUID id;
+    @Column(name = "email")
     private String email;
+    @Column(name = "password")
     private String password;
+    @Column(name = "country")
     private String country;
+    @Column(name = "city")
     private String city;
 
     public User(UserDto dto) {
-        id = String.valueOf(UUID7.generateUuid7());
-        username = dto.getUsername();
+        id = UUID7.generateUuid7();
         email = dto.getEmail();
         password = dto.getPassword();
         country = dto.getCountry();
@@ -31,12 +36,8 @@ public class User {
 
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public String getEmail() {
@@ -67,7 +68,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
-                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", country='" + country + '\'' +
