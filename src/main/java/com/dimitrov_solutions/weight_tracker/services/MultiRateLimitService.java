@@ -21,7 +21,5 @@ public class MultiRateLimitService {
                 .addLimit((limit) ->
                         limit.capacity(1)
                                 .refillIntervally(1, Duration.ofHours(1))).build();
-
     }
-
 }

@@ -80,6 +80,4 @@ public class UUID7test {
 
         assertThrows(NullPointerException.class, () -> UUID7.localDtFromUuid7(uuid));
     }
-
-
 }

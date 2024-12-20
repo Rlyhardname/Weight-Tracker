@@ -146,8 +146,5 @@ public class IconNameStateMachineTest {
 
             return iconNameStateMachine.nameBasedOnClouds(clouds, input);
         }
-
     }
-
-
 }

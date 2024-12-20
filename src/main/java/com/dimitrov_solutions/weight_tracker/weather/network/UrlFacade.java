@@ -10,6 +10,7 @@ import java.nio.file.Path;
 
 public class UrlFacade {
     public static final Logger logger = LoggerFactory.getLogger(UrlFacade.class);
+
     private static String API_KEY;
     private static final String HOST = "api.openweathermap.org";
 
@@ -43,6 +44,4 @@ public class UrlFacade {
 
         return uri.toUriString();
     }
-
-
 }

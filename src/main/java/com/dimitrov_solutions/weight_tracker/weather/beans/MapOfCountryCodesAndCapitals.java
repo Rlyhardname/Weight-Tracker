@@ -209,6 +209,4 @@ public class MapOfCountryCodesAndCapitals {
             Map.entry("YE", "Sanaa"),
             Map.entry("ZM", "Lusaka"),
             Map.entry("ZW", "Harare"));
-
 }
-

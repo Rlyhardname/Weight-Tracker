@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -28,6 +27,7 @@ public class UniqueEmailValidatorMockedTest {
     @MockBean
     UserService userService;
     ConstraintValidatorContext context;
+
     String stubMail = "myMail@gmail.com";
 
     @BeforeEach

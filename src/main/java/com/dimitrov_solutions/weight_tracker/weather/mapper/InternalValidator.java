@@ -8,5 +8,4 @@ public interface InternalValidator {
     Double validateToDouble(JsonNode node, String fieldName);
 
     Integer validateToInt(JsonNode node, String fieldName);
-
 }

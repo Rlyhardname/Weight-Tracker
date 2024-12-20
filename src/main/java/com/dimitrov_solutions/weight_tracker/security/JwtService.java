@@ -23,7 +23,9 @@ import java.util.Map;
 
 @Service
 public class JwtService {
+
     public static final Logger logger = LoggerFactory.getLogger(JwtService.class);
+
     private String secret_key;
 
     public JwtService() {
@@ -35,7 +37,6 @@ public class JwtService {
             System.exit(404);
         }
     }
-
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
@@ -75,7 +76,6 @@ public class JwtService {
                 .parseSignedClaims(token)
                 .getPayload();
     }
-
 
     public boolean validateToken(String token, UserDetails userDetails) {
         final String userName = extractUserName(token);

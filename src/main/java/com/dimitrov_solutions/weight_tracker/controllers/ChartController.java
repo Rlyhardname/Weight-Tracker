@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/charts")
 public class ChartController {
+
     private final ChartService chartService;
     private final JwtService jwtService;
 

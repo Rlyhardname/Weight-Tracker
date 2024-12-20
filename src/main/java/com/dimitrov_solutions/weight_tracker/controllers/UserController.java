@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 @RestController
 public class UserController {
+
     private static final String BAD_CREDENTIALS = "Email or password is invalid";
     private final UserService userService;
 
@@ -32,4 +33,5 @@ public class UserController {
             return ResponseEntity.status(401).body(BAD_CREDENTIALS);
         }
     }
+
 }

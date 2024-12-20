@@ -60,7 +60,5 @@ public class RandomPasswordTest {
 
             assertFalse(Arrays.equals(afterMutation, startingConfiguration), "passwords should not match, fails once in 500,000,000 times");
         }
-
     }
-
 }

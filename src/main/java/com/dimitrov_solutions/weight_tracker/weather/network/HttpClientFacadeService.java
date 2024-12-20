@@ -13,6 +13,7 @@ import java.net.http.HttpResponse;
 @Service
 public class HttpClientFacadeService {
     private static final Logger logger = LoggerFactory.getLogger(HttpClientFacadeService.class);
+
     private final HttpClient client;
 
     public HttpClientFacadeService() {
@@ -36,7 +37,6 @@ public class HttpClientFacadeService {
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private HttpRequest buildRequest(String url) {

@@ -1,5 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.unit.service;
 
+import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 import com.dimitrov_solutions.weight_tracker.repositories.ChartRepository;
 import com.dimitrov_solutions.weight_tracker.services.ChartService;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 
 import java.util.Optional;
 
@@ -17,8 +17,8 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class ChartServiceMockedTest {
-    String chartName;
 
+    String chartName;
     @Mock
     private ChartRepository chartRepository;
     @InjectMocks
@@ -63,5 +63,4 @@ public class ChartServiceMockedTest {
 
         verify(chartRepository, times(1)).delete(searchedChart);
     }
-
 }

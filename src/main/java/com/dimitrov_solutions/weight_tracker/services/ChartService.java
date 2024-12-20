@@ -28,6 +28,4 @@ public class ChartService {
 
         return Optional.of(chartRepository.findByEmail(email));
     }
-
-
 }

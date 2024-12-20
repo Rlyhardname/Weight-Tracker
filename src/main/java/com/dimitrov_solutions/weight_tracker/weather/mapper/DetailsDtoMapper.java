@@ -1,8 +1,8 @@
 package com.dimitrov_solutions.weight_tracker.weather.mapper;
 
-import com.dimitrov_solutions.weight_tracker.weather.exceptions.ApiChangeException;
-import com.dimitrov_solutions.weight_tracker.weather.beans.IconNameStateMachine;
 import com.dimitrov_solutions.weight_tracker.models.dto.WeatherDetailsDto;
+import com.dimitrov_solutions.weight_tracker.weather.beans.IconNameStateMachine;
+import com.dimitrov_solutions.weight_tracker.weather.exceptions.ApiChangeException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -21,7 +21,9 @@ import java.math.RoundingMode;
 @Component
 public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implements InternalValidator {
     public static final Logger logger = LoggerFactory.getLogger(DetailsDtoMapper.class);
+
     public static final String ENDPOINT_NOT_PRODUCING_FIELD = "Endpoint at: %s%n doesn't contain field: %s";
+
     private String url;
     private IconNameStateMachine iconNameStateMachine;
 
@@ -44,7 +46,6 @@ public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implem
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
 
@@ -79,7 +80,6 @@ public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implem
         } catch (NullPointerException e) {
             logEndpointNotProducingField(fieldName, "info");
         }
-
         return "";
     }
 
@@ -93,7 +93,6 @@ public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implem
                 throw new ApiChangeException();
             }
         }
-
         return 0.0;
     }
 
@@ -104,7 +103,6 @@ public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implem
         } catch (NullPointerException e) {
             logEndpointNotProducingField(fieldName, "info");
         }
-
         return 0;
     }
 
@@ -124,11 +122,6 @@ public class DetailsDtoMapper extends JsonDeserializer<WeatherDetailsDto> implem
                 break;
             default:
                 logger.warn(String.format(ENDPOINT_NOT_PRODUCING_FIELD, url, fieldName));
-
         }
-
     }
-
 }
-
-

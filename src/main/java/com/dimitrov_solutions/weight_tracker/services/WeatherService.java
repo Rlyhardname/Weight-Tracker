@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class WeatherService {
-    private final DetailsDtoMapper detailsDtoMapper;
 
+    private final DetailsDtoMapper detailsDtoMapper;
     private final HttpClientFacadeService httpClientFacadeService;
     private final UserService userService;
 
@@ -29,6 +29,4 @@ public class WeatherService {
 
         return detailsDtoMapper.mapTo(body, url);
     }
-
-
 }

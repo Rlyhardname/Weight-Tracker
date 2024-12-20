@@ -20,7 +20,9 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
+
     private final MapOfCountryCodesAndCapitals mapOfCountryCodesAndCapitals;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authManager;

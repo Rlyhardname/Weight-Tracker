@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1.0/weather")
 @RestController
 public class WeatherController {
+
     private final MultiRateLimitService multiRateLimitService;
     private final JwtService jwtService;
     private final WeatherService weatherService;
@@ -35,8 +36,6 @@ public class WeatherController {
             return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body("Too many requests");
         }
 
-
         return ResponseEntity.ok(weatherService.sendRequestReturnDetailsDto(email));
     }
-
 }

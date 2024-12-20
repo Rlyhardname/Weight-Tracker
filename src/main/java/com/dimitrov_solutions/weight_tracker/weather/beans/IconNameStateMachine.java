@@ -9,7 +9,9 @@ import org.springframework.stereotype.Component;
 public class IconNameStateMachine {
     public static final String POSSIBLE_API_CHANGE = "Possible API changed! null value for %s field";
     public static final String VALUE_NOT_SUPPORTED = "%s not supported! Add: %s";
+
     public static Logger logger = LoggerFactory.getLogger(IconNameStateMachine.class);
+
     private final StateMap stateMap;
 
     @Autowired
@@ -45,7 +47,6 @@ public class IconNameStateMachine {
             logger.debug(String.format(VALUE_NOT_SUPPORTED, "WeatherState", weatherStateStr));
             return "default.png";
         }
-
     }
 
     public String nameBasedOnClouds(int clouds, String rainType) {
@@ -73,7 +74,5 @@ public class IconNameStateMachine {
             logger.debug("Should not be getting null values here" + rainType);
             return "cloudy_weak_rain.png";
         }
-
     }
-
 }

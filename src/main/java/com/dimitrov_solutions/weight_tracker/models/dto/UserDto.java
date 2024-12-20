@@ -5,6 +5,7 @@ import com.dimitrov_solutions.weight_tracker.models.validations.UniqueEmail;
 import jakarta.validation.constraints.*;
 
 public class UserDto {
+
     @Email
     @UniqueEmail
     private String email;

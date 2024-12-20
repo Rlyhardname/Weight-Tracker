@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(ChartController.class)
 public class ChartControllerMockedTest {
+
     @Autowired
     MockMvc mockMvc;
     @MockBean
@@ -30,6 +31,7 @@ public class ChartControllerMockedTest {
     JwtService jwtService;
     String email;
     String chartName;
+
     private final String jwtBearer = "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc29tZW1haWxAbXltYWlsLmNvbSIsImlhdCI6MTcyOTk1MDQ1NSwiZXhwIjoxNzMyOTUwNDU1fQ.n1XavNKcS8KnmzrXa6V5CVsxg0DwP1g2-6h1_GT79fk";
 
     @BeforeEach

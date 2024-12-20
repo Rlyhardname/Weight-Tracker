@@ -6,6 +6,7 @@ import underDev.ChartBuilder;
 import java.util.Objects;
 
 public class Chart {
+
     @Id
     private String id;
     private String email;
@@ -13,10 +14,6 @@ public class Chart {
 
     public Chart(String name) {
         this.name = name;
-    }
-
-    public Chart(ChartBuilder builder) {
-        name = builder.getName();
     }
 
     public Chart() {

@@ -1,6 +1,7 @@
 package com.dimitrov_solutions.weight_tracker.enums;
 
 public enum UserStatus {
+
     UNVERIFIED,
     ACTIVE,
     INACTIVE,
