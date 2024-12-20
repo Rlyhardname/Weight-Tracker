@@ -13,7 +13,7 @@ import static java.lang.annotation.ElementType.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = UniqueEmailValidator.class)
 public @interface UniqueEmail {
-    String message() default "Invalid Email";
+    String message() default "Email already in the system";
 
     Class<?>[] groups() default {};
 

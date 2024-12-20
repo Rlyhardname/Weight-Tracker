@@ -1,5 +1,6 @@
 package com.dimitrov_solutions.weight_tracker;
 
+import com.dimitrov_solutions.weight_tracker.security.JwtService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

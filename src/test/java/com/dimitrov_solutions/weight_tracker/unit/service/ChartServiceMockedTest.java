@@ -1,26 +1,27 @@
 package com.dimitrov_solutions.weight_tracker.unit.service;
 
-import underDev.Chart;
 import com.dimitrov_solutions.weight_tracker.repositories.ChartRepository;
 import com.dimitrov_solutions.weight_tracker.services.ChartService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import underDev.Chart;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 public class ChartServiceMockedTest {
     String chartName;
 
-    @MockBean
+    @Mock
     private ChartRepository chartRepository;
-    @Autowired
+    @InjectMocks
     private ChartService chartService;
 
     @BeforeEach
@@ -36,6 +37,7 @@ public class ChartServiceMockedTest {
         Optional<Chart> expected = chartService.findByName(chartName);
 
         assertTrue(expected.isPresent());
+        verify(chartRepository).findByName(chartName);
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.unit.domain;
 
+import org.junit.jupiter.api.AfterEach;
 import underDev.Builder;
 import underDev.Chart;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,11 +16,16 @@ public class BuilderMockedTest {
     @Mock
     Builder<Chart> builder;
     String mockName;
-
+    AutoCloseable autoCloseable;
     @BeforeEach
     void init() {
         mockName = "I'm mr mock!";
-        MockitoAnnotations.openMocks(this);
+        autoCloseable = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterEach()
+    void cleanUp() throws Exception {
+        autoCloseable.close();
     }
 
     @Test

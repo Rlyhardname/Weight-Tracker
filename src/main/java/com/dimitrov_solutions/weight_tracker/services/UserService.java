@@ -2,9 +2,10 @@ package com.dimitrov_solutions.weight_tracker.services;
 
 import com.dimitrov_solutions.weight_tracker.exceptions.InvalidCredentialsException;
 import com.dimitrov_solutions.weight_tracker.models.dto.UserDto;
-import com.dimitrov_solutions.weight_tracker.models.user.NoSuchUserException;
-import com.dimitrov_solutions.weight_tracker.models.user.entity.User;
+import com.dimitrov_solutions.weight_tracker.models.NoSuchUserException;
+import com.dimitrov_solutions.weight_tracker.models.entity.User;
 import com.dimitrov_solutions.weight_tracker.repositories.UserRepository;
+import com.dimitrov_solutions.weight_tracker.security.JwtService;
 import com.dimitrov_solutions.weight_tracker.weather.beans.MapOfCountryCodesAndCapitals;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

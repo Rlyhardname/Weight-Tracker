@@ -1,4 +1,4 @@
-package com.dimitrov_solutions.weight_tracker.models.user.entity;
+package com.dimitrov_solutions.weight_tracker.models.entity;
 
 import com.dimitrov_solutions.weight_tracker.models.dto.UserDto;
 import com.dimitrov_solutions.weight_tracker.utils.UUID7;

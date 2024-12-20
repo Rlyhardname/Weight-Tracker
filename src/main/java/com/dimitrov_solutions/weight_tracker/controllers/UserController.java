@@ -3,14 +3,13 @@ package com.dimitrov_solutions.weight_tracker.controllers;
 import com.dimitrov_solutions.weight_tracker.exceptions.InvalidCredentialsException;
 import com.dimitrov_solutions.weight_tracker.models.dto.UserDto;
 import com.dimitrov_solutions.weight_tracker.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/users")
 @RestController
-@Validated
 public class UserController {
     private static final String BAD_CREDENTIALS = "Email or password is invalid";
     private final UserService userService;
@@ -21,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<UserDto> register(@RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> register(@Valid @RequestBody UserDto userDto) {
         return ResponseEntity.ok(userService.register(userDto));
     }
 

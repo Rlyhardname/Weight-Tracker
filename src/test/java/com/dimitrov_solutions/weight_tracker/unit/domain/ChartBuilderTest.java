@@ -10,12 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ChartBuilderTest {
 
     ChartBuilder builder;
-    String mockName;
 
     @BeforeEach
     void init() {
         builder = new ChartBuilder();
-        mockName = "I'm mr mock!";
     }
 
     @Test

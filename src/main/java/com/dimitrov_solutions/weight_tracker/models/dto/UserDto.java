@@ -1,6 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.models.dto;
 
-import com.dimitrov_solutions.weight_tracker.models.user.entity.User;
+import com.dimitrov_solutions.weight_tracker.models.entity.User;
 import com.dimitrov_solutions.weight_tracker.models.validations.UniqueEmail;
 import jakarta.validation.constraints.*;
 

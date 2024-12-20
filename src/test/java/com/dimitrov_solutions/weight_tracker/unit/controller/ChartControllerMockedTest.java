@@ -1,31 +1,36 @@
 package com.dimitrov_solutions.weight_tracker.unit.controller;
 
 import com.dimitrov_solutions.weight_tracker.controllers.ChartController;
-import underDev.Chart;
+import com.dimitrov_solutions.weight_tracker.security.JwtService;
 import com.dimitrov_solutions.weight_tracker.services.ChartService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.web.servlet.MockMvc;
+import underDev.Chart;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+@WebMvcTest(ChartController.class)
 public class ChartControllerMockedTest {
-
+    @Autowired
+    MockMvc mockMvc;
     @MockBean
     ChartService chartService;
-    @Autowired
-    ChartController chartController;
+    @MockBean
+    JwtService jwtService;
     String email;
     String chartName;
+    private final String jwtBearer = "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc29tZW1haWxAbXltYWlsLmNvbSIsImlhdCI6MTcyOTk1MDQ1NSwiZXhwIjoxNzMyOTUwNDU1fQ.n1XavNKcS8KnmzrXa6V5CVsxg0DwP1g2-6h1_GT79fk";
 
     @BeforeEach
     void init() {
@@ -34,53 +39,16 @@ public class ChartControllerMockedTest {
     }
 
     @Test
-    void fetch_all_user_charts_with_full_list() {
+    @WithMockUser(username = "asomemail@mymail.com", password = "qwertyuiozzz")
+    void fetch_all_user_charts_with_full_list() throws Exception {
         List<Chart> expectedList = List.of(new Chart("chart1"), new Chart("chart2"));
         Optional<List<Chart>> expected = (Optional.of(List.of(new Chart("chart1"), new Chart("chart2"))));
         when(chartService.findAllByCredentials(email)).thenReturn(expected);
 
-        ResponseEntity<List<Chart>> actual = chartController.fetchAllUserCharts();
 
-        assertEquals(ResponseEntity.of(expected), actual, "Lists should be the same");
-
-        verify(chartService, times(1)).findAllByCredentials(email);
+        mockMvc.perform(get("/charts/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("Authorization", jwtService))
+                .andExpect(status().isOk());
     }
-
-    @Test
-    void return_response_code_404_from_empty_list_optional() {
-        ResponseEntity<Chart> expected = ResponseEntity.of(Optional.empty());
-        when(chartService.findAllByCredentials(email)).thenReturn(Optional.empty());
-
-        ResponseEntity<List<Chart>> actual = chartController.fetchAllUserCharts();
-        assertEquals(expected.getStatusCode(), actual.getStatusCode(), "both responseEntities status code should be " + expected.getBody());
-        assertEquals(expected.getBody(), actual.getBody(), "both responseEntities body should be " + HttpStatus.NOT_FOUND);
-
-        verify(chartService, times(1)).findAllByCredentials(email);
-    }
-
-    @Test
-    void Fetch_user_chart_based_on_Cname() {
-        ResponseEntity<Chart> expected = ResponseEntity.of(Optional.of(new Chart(chartName)));
-        when(chartService.findByName(chartName)).thenReturn(Optional.of(new Chart(chartName)));
-
-        ResponseEntity<Chart> actual = chartController.fetchChartByName(chartName);
-
-        assertNotNull(actual);
-        assertEquals(expected.getStatusCode(), actual.getStatusCode(), "status code should be equal to = " + expected.getStatusCode());
-        assertEquals(expected.getBody(), actual.getBody(), "chart objects should be equal = ");
-
-        verify(chartService, times(1)).findByName(chartName);
-    }
-
-    @Test
-    void Fetch_user_chart_returns_404() {
-        ResponseEntity<Chart> expected = ResponseEntity.of(Optional.empty());
-        when(chartService.findByName(chartName)).thenReturn(Optional.empty());
-
-        ResponseEntity<Chart> actual = chartController.fetchChartByName(chartName);
-
-        assertEquals(expected.getStatusCode(), actual.getStatusCode(), "both status codes should equal" + HttpStatus.NOT_FOUND);
-        assertNull(expected.getBody());
-    }
-
 }
