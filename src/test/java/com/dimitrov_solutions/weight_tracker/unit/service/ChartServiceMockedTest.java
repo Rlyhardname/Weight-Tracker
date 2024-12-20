@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import underDev.Chart;
+import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 
 import java.util.Optional;
 

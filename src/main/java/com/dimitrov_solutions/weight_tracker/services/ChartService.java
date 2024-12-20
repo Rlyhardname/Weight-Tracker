@@ -1,6 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.services;
 
-import underDev.Chart;
+import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 import com.dimitrov_solutions.weight_tracker.repositories.ChartRepository;
 import org.springframework.stereotype.Service;
 

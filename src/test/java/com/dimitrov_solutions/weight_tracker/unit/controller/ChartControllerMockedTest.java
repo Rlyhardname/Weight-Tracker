@@ -11,7 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import underDev.Chart;
+import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 
 import java.util.List;
 import java.util.Optional;

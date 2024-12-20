@@ -2,7 +2,7 @@ package com.dimitrov_solutions.weight_tracker.controllers;
 
 import com.dimitrov_solutions.weight_tracker.security.JwtService;
 import org.springframework.web.bind.annotation.RequestHeader;
-import underDev.Chart;
+import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 import com.dimitrov_solutions.weight_tracker.services.ChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -2,7 +2,7 @@ package com.dimitrov_solutions.weight_tracker.unit.domain;
 
 import org.junit.jupiter.api.AfterEach;
 import underDev.Builder;
-import underDev.Chart;
+import com.dimitrov_solutions.weight_tracker.models.chart.Chart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
