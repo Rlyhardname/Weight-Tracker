@@ -11,10 +11,20 @@ public class RandomPassword {
     public static final char[] asciiUpperCase = {65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90};
     public static final char[] asciiLowerCase = {97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122};
 
+    /**<pre>
+     * Generates a twelve character secure password,
+     * with randomized characters from the ascii arrays in the class.
+     * Contains one number, one special character, one upper case, and 9 lower case characters
+     </pre>
+     */
     public static String generateSecurePassword() {
         return String.valueOf(randomArrange(oneNum_OneSymbol_OneUpperCaseLetter_OneLowerCaseLetter()));
     }
 
+    /**
+     * Randomize sequence of the characters in the generated password and return
+     * an array of the characters
+     */
     protected static char[] randomArrange(char[] arr) {
         char[] result = new char[12];
         SecureRandom rand = new SecureRandom();
@@ -28,6 +38,10 @@ public class RandomPassword {
         return result;
     }
 
+    /**
+     * Randomizes one of each UpperCase, Number and special Symbol, and nine
+     * lower case characters from the ascii arrays in the class and returns char array of them.
+     */
     private static char[] oneNum_OneSymbol_OneUpperCaseLetter_OneLowerCaseLetter() {
         SecureRandom rand = new SecureRandom();
         char[] password = new char[12];
