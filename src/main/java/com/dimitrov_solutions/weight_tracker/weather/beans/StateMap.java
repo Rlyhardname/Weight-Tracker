@@ -7,6 +7,10 @@ import java.util.Map;
 
 @Component
 public class StateMap {
+    /**
+     * Key - codes returned from API correlating to the file names
+     * used for the custom icons on the server
+     */
     private final Map<String, String> weatherStateMap = new HashMap<>(Map.of(
             "01d", "CLEAR_SKY",
             "02d", "FEW_CLOUDS",

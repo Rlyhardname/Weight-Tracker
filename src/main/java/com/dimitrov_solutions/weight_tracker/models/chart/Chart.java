@@ -1,7 +1,6 @@
 package com.dimitrov_solutions.weight_tracker.models.chart;
 
 import org.springframework.data.annotation.Id;
-import underDev.ChartBuilder;
 
 import java.util.Objects;
 

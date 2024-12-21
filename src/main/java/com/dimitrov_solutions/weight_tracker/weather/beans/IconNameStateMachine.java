@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class IconNameStateMachine {
+
     public static final String POSSIBLE_API_CHANGE = "Possible API changed! null value for %s field";
     public static final String VALUE_NOT_SUPPORTED = "%s not supported! Add: %s";
 
@@ -62,8 +63,9 @@ public class IconNameStateMachine {
                 return "sunny_cloudy_snowy.png";
             }
 
-            if (rainType.equals("rain"))
+            if (rainType.equals("rain")){
                 return "cloudy_weak_rain.png";
+            }
 
             if (rainType.equals("showerRain")) {
                 return "cloudy_rain.png";

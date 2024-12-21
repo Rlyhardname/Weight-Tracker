@@ -1,6 +1,7 @@
 package com.dimitrov_solutions.weight_tracker.weather.beans;
 
 public enum State {
+
     CLEAR_SKY("clear sky"),
     FEW_CLOUDS("few clouds"),
     SCATTERED_CLOUDS("scattered clouds"),

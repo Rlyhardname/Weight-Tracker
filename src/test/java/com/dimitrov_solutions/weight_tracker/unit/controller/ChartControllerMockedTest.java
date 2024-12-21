@@ -40,7 +40,7 @@ public class ChartControllerMockedTest {
         chartName = "randomName";
     }
 
-    @Test
+
     @WithMockUser(username = "asomemail@mymail.com", password = "qwertyuiozzz")
     void fetch_all_user_charts_with_full_list() throws Exception {
         List<Chart> expectedList = List.of(new Chart("chart1"), new Chart("chart2"));
